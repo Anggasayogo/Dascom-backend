@@ -23,4 +23,6 @@ $router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($
     $router->get('/customer','CustomerController@show');
     $router->get('/customer/{id}','CustomerController@show');
     $router->post('/add/customer','CustomerController@store');
+    $router->post('/update/customer','CustomerController@update');
+    $router->delete('/delete/customer/{id}','CustomerController@destroy');
 });    
