@@ -18,11 +18,21 @@ $router->get('/', function () use ($router) {
 $router->post('/register','AuthController@register');
 $router->post('/login','AuthController@login');
 $router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($router) {
+    // users
     $router->get('/user/{id}','UserController@show');
     $router->get('/user','UserController@showAll');
+    // crudcustomer
     $router->get('/customer','CustomerController@show');
     $router->get('/customer/{id}','CustomerController@show');
     $router->post('/add/customer','CustomerController@store');
     $router->post('/update/customer','CustomerController@update');
     $router->delete('/delete/customer/{id}','CustomerController@destroy');
+    // crud services
+    $router->post('/add/service','ServiceController@store');
+    $router->get('/service/{id}','ServiceController@show');
+    $router->get('/service','ServiceController@show');
+    $router->post('/update/service','ServiceController@update');
+    $router->delete('/delete/service/{id}','ServiceController@destroy');
+    // pekerjaan
+    $router->post('pekerjaan','PekerjaanController@store');
 });    
