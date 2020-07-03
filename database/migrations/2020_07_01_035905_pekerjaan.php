@@ -17,11 +17,11 @@ class Pekerjaan extends Migration
             $table->increments('id_pekerjaan');
             $table->integer('id_customer');
             $table->string('status');
-            $table->text('keterangan');
-            $table->string('photo');
-            $table->string('file');
+            $table->text('keterangan')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('file')->nullable();
             $table->string('no');
-            $table->integer('id_type_pek');
+            $table->integer('service_id');
             $table->timestamps();
         });
     }

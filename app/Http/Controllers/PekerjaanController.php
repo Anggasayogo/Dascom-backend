@@ -50,11 +50,19 @@ class PekerjaanController extends Controller
                         ->join('service_type','pekerjaan.service_id','=','service_type.service_id')
                         ->where('status','=','diterima')
                         ->get();
-            return response()->json([
-                'status' => true,
-                'message' => 'data found!',
-                'data' => $data,
-            ],200);
+            if($data !== []){
+                return response()->json([
+                    'status' => true,
+                    'message' => 'data found!',
+                    'data' => $data,
+                ],200);
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'message' => 'data not be found!',
+                    'data' => null,
+                ],404);
+            }
         }
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Customer extends Migration
+class CreateGantiParts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class Customer extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table) {
-            $table->id('customer_id');
-            $table->string('customer_name');
-            $table->string('addres');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('logo');
+        Schema::create('ganti_parts', function (Blueprint $table) {
+            $table->increments('id_ganti_parts');
+            $table->string('jenis');
+            $table->string('descripction_parts');
             $table->timestamps();
-        });   
+        });
     }
 
     /**
@@ -31,6 +28,6 @@ class Customer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('ganti_parts');
     }
 }

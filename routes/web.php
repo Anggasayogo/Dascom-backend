@@ -42,7 +42,12 @@ $router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($
     $router->post('/update/file/kerja','PekerjaanController@updatefilepekerjaan');
     $router->post('/update/photo/kerja','PekerjaanController@updatephotoepekerjaan');
     $router->post('/update/kerja/selesai','PekerjaanController@updtselesaikerja');
-    // tiket cm
-    
+    // crud parts
+    $router->post('/add/parts','PartsController@store');
+    $router->get('/parts','PartsController@show');
+    $router->get('/parts/{id}','PartsController@show');
+    $router->post('/update/parts','PartsController@update');
+    $router->delete('/delete/parts/{id}','PartsController@destroy');
+
     
 });    
