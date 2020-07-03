@@ -33,6 +33,16 @@ $router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($
     $router->get('/service','ServiceController@show');
     $router->post('/update/service','ServiceController@update');
     $router->delete('/delete/service/{id}','ServiceController@destroy');
-    // pekerjaan
-    $router->post('pekerjaan','PekerjaanController@store');
+    // pekerjaan kurang date
+    $router->post('add/pekerjaan','PekerjaanController@store');
+    $router->get('/pekerjaan/selesai','PekerjaanController@pekerjaanselesai');
+    $router->get('/pekerjaan','PekerjaanController@show');
+    $router->get('/detail/pekerjaan/{id}','PekerjaanController@show');
+    $router->post('/update/statusketerangan/kerja','PekerjaanController@updatepekerjaan');
+    $router->post('/update/file/kerja','PekerjaanController@updatefilepekerjaan');
+    $router->post('/update/photo/kerja','PekerjaanController@updatephotoepekerjaan');
+    $router->post('/update/kerja/selesai','PekerjaanController@updtselesaikerja');
+    // tiket cm
+    
+    
 });    
