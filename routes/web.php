@@ -48,6 +48,16 @@ $router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($
     $router->get('/parts/{id}','PartsController@show');
     $router->post('/update/parts','PartsController@update');
     $router->delete('/delete/parts/{id}','PartsController@destroy');
-
+    // tiket cm
+    $router->post('add/servicecm','ServiceCmController@store');
+    $router->post('update/keterangan/servicecm','ServiceCmController@updateServicecm');
+    $router->post('update/statusdanketerangan/servicecm','ServiceCmController@updateServicecmsts');
+    $router->post('update/file/servicecm','ServiceCmController@updateFile');
+    $router->post('update/photo/servicecm','ServiceCmController@updatePhoto');
+    $router->get('servicecm','ServiceCmController@show');
+    $router->get('servicecm/{id}','ServiceCmController@show');
+    $router->get('servicecm/selesai','ServiceCmController@showSelesai');
+    $router->get('servicecm/selesai/{id}','ServiceCmController@showSelesai');
+    $router->post('update/status/servicecm','ServiceCmController@updatests');
     
 });    
