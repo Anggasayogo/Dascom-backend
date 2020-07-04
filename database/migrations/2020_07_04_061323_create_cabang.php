@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Customer extends Migration
+class CreateCabang extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class Customer extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table) {
-            $table->id('customer_id');
-            $table->string('nama_perusahaan');
-            $table->string('customer_name');
+        Schema::create('cabang', function (Blueprint $table) {
+            $table->increments('id_cabang');
+            $table->string('nama_cabang');
+            $table->string('kode_cabang');
+            $table->string('kanwil');
             $table->string('addres');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('logo');
+            $table->string('phone_number');
             $table->timestamps();
-        });   
+        });
     }
 
     /**
@@ -32,6 +31,6 @@ class Customer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('cabang');
     }
 }

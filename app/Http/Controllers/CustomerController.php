@@ -37,6 +37,7 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
+        $perusahaan = $request->input('nama_perushaan');
         $nama_customer = $request->input('customer_name');
         $addres = $request->input('addres');
         $email = $request->input('email');
@@ -51,6 +52,7 @@ class CustomerController extends Controller
             $image = 'logo-' . time() . '.' . $file_ext;
             if($request->file('logo')->move($destination_path, $image)){
                 $data = [
+                    'nama_perusahaan' => $perusahaan,
                     'customer_name' => $nama_customer,
                     'addres' => $addres,
                     'email' => $email,
@@ -85,6 +87,7 @@ class CustomerController extends Controller
 
     public function update(Request $request)
     {
+        $perusahaan = $request->input('nama_perushaan');
         $nama_customer = $request->input('customer_name');
         $addres = $request->input('addres');
         $email = $request->input('email');
@@ -99,6 +102,7 @@ class CustomerController extends Controller
             $image = 'logo-' . time() . '.' . $file_ext;
             if($request->file('logo')->move($destination_path, $image)){
                 $data = [
+                    'nama_perusahaan' => $perusahaan,
                     'customer_name' => $nama_customer,
                     'addres' => $addres,
                     'email' => $email,
@@ -122,6 +126,7 @@ class CustomerController extends Controller
             
         }else{
             $data = [
+                'nama_perusahaan' => $perusahaan,
                 'customer_name' => $nama_customer,
                 'addres' => $addres,
                 'email' => $email,

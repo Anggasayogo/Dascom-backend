@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
 
 $router->post('/register','AuthController@register');
 $router->post('/login','AuthController@login');
-$router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($router) {
+$router->group(['prefix' => 'api/v1/','middleware' => 'auth'], function () use ($router) {
     // users
     $router->get('/user/{id}','UserController@show');
     $router->get('/user','UserController@showAll');
@@ -54,10 +54,18 @@ $router->group(['prefix' => 'api/v1','middleware' => 'auth'], function () use ($
     $router->post('update/statusdanketerangan/servicecm','ServiceCmController@updateServicecmsts');
     $router->post('update/file/servicecm','ServiceCmController@updateFile');
     $router->post('update/photo/servicecm','ServiceCmController@updatePhoto');
+    $router->get('servicecm/selesai','ServiceCmController@showSelesai');
     $router->get('servicecm','ServiceCmController@show');
     $router->get('servicecm/{id}','ServiceCmController@show');
-    $router->get('servicecm/selesai','ServiceCmController@showSelesai');
     $router->get('servicecm/selesai/{id}','ServiceCmController@showSelesai');
     $router->post('update/status/servicecm','ServiceCmController@updatests');
+    //cabang
+    $router->post('add/cabang','CabangController@store');
+    $router->post('update/cabang','CabangController@update');
+    $router->delete('/delete/cabang/{id}','CabangController@destroy');
+    $router->get('/cabang','CabangController@showdetails');
+    $router->get('detail/cabang/{id}','CabangController@showdetails');
+    // apreventive maintance (pm)
+
     
 });    
