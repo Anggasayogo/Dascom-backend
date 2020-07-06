@@ -66,6 +66,10 @@ $router->group(['prefix' => 'api/v1/','middleware' => 'auth'], function () use (
     $router->get('/cabang','CabangController@showdetails');
     $router->get('detail/cabang/{id}','CabangController@showdetails');
     // apreventive maintance (pm)
-
+    $router->get('preventive','PreventiveController@show');
+    $router->get('preventive/detail/{id}','PreventiveController@show');
+    $router->post('add/preventive','PreventiveController@store');
+    $router->post('update/preventive','PreventiveController@update');
+    $router->delete('delete/preventive/{id}','PreventiveController@destroy');
     
 });    
