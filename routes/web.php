@@ -71,5 +71,12 @@ $router->group(['prefix' => 'api/v1/','middleware' => 'auth'], function () use (
     $router->post('add/preventive','PreventiveController@store');
     $router->post('update/preventive','PreventiveController@update');
     $router->delete('delete/preventive/{id}','PreventiveController@destroy');
-    
+    // maintance conract mc
+    $router->post('add/mc/','MaintanceContract@store');
+    $router->post('update/photo/mc','MaintanceContract@updatePhotoMc');
+    $router->post('update/file/mc','MaintanceContract@updateFileMc');
+    $router->get('all/mc','MaintanceContract@show');
+    $router->get('detail/mc/{id}','MaintanceContract@show');
+    $router->post('update/mc/selesai','MaintanceContract@updateStatus');
+    $router->get('mc/selesai','MaintanceContract@showSelesai');
 });    
