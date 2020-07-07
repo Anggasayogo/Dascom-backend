@@ -79,4 +79,10 @@ $router->group(['prefix' => 'api/v1/','middleware' => 'auth'], function () use (
     $router->get('detail/mc/{id}','MaintanceContract@show');
     $router->post('update/mc/selesai','MaintanceContract@updateStatus');
     $router->get('mc/selesai','MaintanceContract@showSelesai');
+    // crud teknisi
+    $router->post('add/tehniction','TehnicionController@store');
+    $router->post('update/tehniction','TehnicionController@update');
+    $router->delete('delete/tehniction/{id}','TehnicionController@destroy');
+    $router->get('tehniction','TehnicionController@show');
+    $router->get('tehniction/{id}','TehnicionController@show');
 });    
