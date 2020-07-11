@@ -14,7 +14,7 @@ class Partner extends Migration
     public function up()
     {
         Schema::create('partner', function (Blueprint $table) {
-            $table->id('partner_id');
+            $table->increments('partner_id');
             $table->string('nama_partner_dealer');
             $table->string('addres');
             $table->string('name');

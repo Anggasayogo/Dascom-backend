@@ -14,7 +14,7 @@ class Staf extends Migration
     public function up()
     {
         Schema::create('staf', function (Blueprint $table) {
-            $table->id('staf_id');
+            $table->increments('staf_id');
             $table->string('name_staf');
             $table->string('position');
             $table->string('addres');

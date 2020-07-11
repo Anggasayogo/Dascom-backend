@@ -14,7 +14,7 @@ class Serial extends Migration
     public function up()
     {
         Schema::create('serial', function (Blueprint $table) {
-            $table->id('serial_id');
+            $table->increments('serial_id');
             $table->string('type_unit');
             $table->string('serial_number');
             $table->integer('customer_id');

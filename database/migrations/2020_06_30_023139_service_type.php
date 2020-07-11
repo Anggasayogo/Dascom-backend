@@ -14,7 +14,7 @@ class ServiceType extends Migration
     public function up()
     {
         Schema::create('service_type', function (Blueprint $table) {
-            $table->id('service_id');
+            $table->increments('service_id');
             $table->string('nama_service');
             $table->text('description');
             $table->timestamps();

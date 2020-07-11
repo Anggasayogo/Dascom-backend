@@ -14,7 +14,7 @@ class Regional extends Migration
     public function up()
     {
         Schema::create('regional', function (Blueprint $table) {
-            $table->id('regional_id');
+            $table->increments('regional_id');
             $table->integer('customer_id');
             $table->string('regional_name');
             $table->string('addres');

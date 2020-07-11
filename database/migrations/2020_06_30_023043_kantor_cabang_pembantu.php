@@ -14,7 +14,7 @@ class KantorCabangPembantu extends Migration
     public function up()
     {
         Schema::create('kantor_cabang_pembantu', function (Blueprint $table) {
-            $table->id('branch_id');
+            $table->increments('branch_id');
             $table->integer('main_branch_id');
             $table->integer('regional_id');
             $table->integer('customer_id');
