@@ -220,4 +220,26 @@ class PekerjaanController extends Controller
 
         }
     }
+
+    public function updtserialnum(Request $request)
+    {
+        $id = $request->input('id_pekerjaan');
+        $serialnum = $request->input('serial_number');
+
+        $update = DB::table('pekerjaan')->where('id_pekerjaan','=',$id)->update(['serial_number' => $serialnum]);
+        if($update){
+            return response()->json([
+                'status' => true,
+                'message' => 'serialnumber has updated!',
+                'data' => $serialnum,
+            ],201);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'serial dosent updated!',
+                'data' => null,
+            ],400);
+        }
+
+    }
 }

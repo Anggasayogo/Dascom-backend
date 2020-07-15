@@ -37,107 +37,68 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $perusahaan = $request->input('nama_perushaan');
+        $perusahaan = $request->input('nama_perusahaan');
         $nama_customer = $request->input('customer_name');
         $addres = $request->input('addres');
         $email = $request->input('email');
         $phone = $request->input('phone');
+        $image = $request->input('logo');
         
+        $data = [
+            'nama_perusahaan' => $perusahaan,
+            'customer_name' => $nama_customer,
+            'addres' => $addres,
+            'email' => $email,
+            'phone' => $phone,
+            'logo' => $image,
+        ];
 
-        if($request->hasFile('logo')){
-            $original_filename = $request->file('logo')->getClientOriginalName();
-            $original_filename_arr = explode('.', $original_filename);
-            $file_ext = end($original_filename_arr);
-            $destination_path = './logo';
-            $image = 'logo-' . time() . '.' . $file_ext;
-            if($request->file('logo')->move($destination_path, $image)){
-                $data = [
-                    'nama_perusahaan' => $perusahaan,
-                    'customer_name' => $nama_customer,
-                    'addres' => $addres,
-                    'email' => $email,
-                    'phone' => $phone,
-                    'logo' => $image,
-                ];
-                
-                DB::table('customer')->insert($data);
-
-                return response()->json([
-                    'status' => true,
-                    'message' => 'data has created',
-                    'data' => $data,
-                ],201);
-            }else{
-                return response()->json([
-                    'status' => false,
-                    'message' => 'server error!',
-                    'data' => null,
-                ],500);
-            }
-            
+        $inserting = DB::table('customer')->insert($data);
+        if($inserting){
+            return response()->json([
+                'status' => true,
+                'message' => 'customer aded!',
+                'data' => $data,
+            ],200);
         }else{
             return response()->json([
                 'status' => false,
-                'message' => 'add data fail!',
-                'data' => null,
-            ],400);
+                'message' => 'error ocureted!',
+            ],500);
         }
     }
 
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
-        $perusahaan = $request->input('nama_perushaan');
+        $perusahaan = $request->input('nama_perusahaan');
         $nama_customer = $request->input('customer_name');
         $addres = $request->input('addres');
         $email = $request->input('email');
         $phone = $request->input('phone');
-        $id = $request->input('id');
+        $image = $request->input('logo');
+        
+        $data = [
+            'nama_perusahaan' => $perusahaan,
+            'customer_name' => $nama_customer,
+            'addres' => $addres,
+            'email' => $email,
+            'phone' => $phone,
+            'logo' => $image,
+        ];
 
-        if($request->hasFile('logo')){
-            $original_filename = $request->file('logo')->getClientOriginalName();
-            $original_filename_arr = explode('.', $original_filename);
-            $file_ext = end($original_filename_arr);
-            $destination_path = './logo';
-            $image = 'logo-' . time() . '.' . $file_ext;
-            if($request->file('logo')->move($destination_path, $image)){
-                $data = [
-                    'nama_perusahaan' => $perusahaan,
-                    'customer_name' => $nama_customer,
-                    'addres' => $addres,
-                    'email' => $email,
-                    'phone' => $phone,
-                    'logo' => $image,
-                ];
-                DB::table('customer')->where('customer_id','=',$id)->update($data);
-
-                return response()->json([
-                    'status' => true,
-                    'message' => 'data has created',
-                    'data' => $data,
-                ],201);
-            }else{
-                return response()->json([
-                    'status' => false,
-                    'message' => 'server error!',
-                    'data' => null,
-                ],500);
-            }
-            
-        }else{
-            $data = [
-                'nama_perusahaan' => $perusahaan,
-                'customer_name' => $nama_customer,
-                'addres' => $addres,
-                'email' => $email,
-                'phone' => $phone,
-            ];
-            DB::table('customer')->where('customer_id','=',$id)->update($data);
+        $inserting = DB::table('customer')->where('customer_id','=',$id)->update($data);
+        if($inserting){
             return response()->json([
                 'status' => true,
-                'message' => 'data has update no image !',
+                'message' => 'customer updated!',
                 'data' => $data,
-            ],201);
+            ],200);
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'error ocureted!',
+            ],500);
         }
 
     }

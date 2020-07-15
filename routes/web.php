@@ -25,7 +25,7 @@ $router->group(['prefix' => 'api/v1/','middleware' => 'auth'], function () use (
     $router->get('/customer','CustomerController@show');
     $router->get('/customer/{id}','CustomerController@show');
     $router->post('/add/customer','CustomerController@store');
-    $router->post('/update/customer','CustomerController@update');
+    $router->post('/update/customer/{id}','CustomerController@update');
     $router->delete('/delete/customer/{id}','CustomerController@destroy');
     // crud services
     $router->post('/add/service','ServiceController@store');
@@ -42,6 +42,7 @@ $router->group(['prefix' => 'api/v1/','middleware' => 'auth'], function () use (
     $router->post('/update/file/kerja','PekerjaanController@updatefilepekerjaan');
     $router->post('/update/photo/kerja','PekerjaanController@updatephotoepekerjaan');
     $router->post('/update/kerja/selesai','PekerjaanController@updtselesaikerja');
+    $router->post('/update/serialnumber/','PekerjaanController@updtserialnum');
     // crud parts
     $router->post('/add/parts','PartsController@store');
     $router->get('/parts','PartsController@show');
